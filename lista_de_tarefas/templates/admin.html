@@ -1,0 +1,14 @@
+<h1>Painel Admin</h1>
+
+<ul>
+    {% for usuario in usuarios %}
+        <li>{{ usuario.login }}
+            <form action="/delete_user/{{ usuario.id }}" method="POST" style="display: inline;">
+                <button type="submit">Remover</button>
+            </form>
+            <form action="/ban_user/{{ usuario.login }}" method="POST" style="display: inline;">
+                <button type="submit">Banir</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>

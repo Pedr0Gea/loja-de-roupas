@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+
+        <!-- Formulário para exclusão em massa -->
+        <form id="mass-delete-form" action="/delete_selected" method="POST">
+            <h2>Tarefas Públicas</h2>
+            <ul>
+                {% for tarefa in tarefas_publicas %}
+                <li>
+                    <input type="checkbox" name="tarefas" value="{{ tarefa.id }}">
+                    {{ tarefa.nome }} <small>(criado por: {{ tarefa.usuario.login }})</small>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <h2>Tarefas Privadas</h2>
+            <ul>
+                {% for tarefa in tarefas_privadas %}
+                <li>
+                    <input type="checkbox" name="tarefas" value="{{ tarefa.id }}">
+                    {{ tarefa.nome }}
+                </li>
+                {% endfor %}
+            </ul>
+
+            <button type="submit">Excluir Selecionadas</button>
+        </form>
+
+        <!-- Formulário para adicionar nova tarefa -->
+        <form action="/add" method="POST">
+            <input type="text" name="tarefa" placeholder="Nova tarefa" required>
+            <label>
+                <input type="checkbox" name="publica">
+                Pública
+            </label>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <!-- Formulário para logout -->
+        <form action="/logout" method="POST" style="display: inline;">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+
+</html>
