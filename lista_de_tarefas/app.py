@@ -5,6 +5,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import Column, Integer, String, Boolean
 from flask_migrate import Migrate
 import os
+# rmdir /s /q venv
+# python -m venv venv
+#.\venv\Scripts\activate
+# pip install Flask Flask-SQLAlchemy Flask-Login Flask-Migrate Werkzeug
+# flask db init
+# flask db migrate -m "Mensagem da migração"
+# flask db upgrade
 
 # Inicializa o aplicativo Flask
 app = Flask(__name__)
