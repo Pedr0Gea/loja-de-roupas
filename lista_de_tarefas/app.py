@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import Column, Integer, String, Boolean
 from flask_migrate import Migrate
 import os
-# rmdir /s /q venv
+# Remove-Item -Recurse -Force venv
 # python -m venv venv
 #.\venv\Scripts\activate
 # pip install Flask Flask-SQLAlchemy Flask-Login Flask-Migrate Werkzeug
