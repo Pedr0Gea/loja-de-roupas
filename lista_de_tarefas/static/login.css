@@ -1,0 +1,85 @@
+/* Estilo Global */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #dfd8f8;  /* Cor suave de lilás claro */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container centralizado para o conteúdo */
+.login-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Logo */
+.logo-img {
+    width: 120px;  /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Nome do projeto */
+.project-name {
+    font-size: 24px;
+    color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Formulário de login/registro */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campos de input (login e senha) */
+input[type="text"], input[type="password"] {
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Botão de login/registro */
+button {
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background-color: #b05bd9;  /* Tom mais escuro de magenta (#b05bd9) */
+}
+
+/* Link de registro */
+.register-link {
+    color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #b05bd9;  /* Tom mais escuro de magenta (#b05bd9) */
+}

@@ -1,46 +1,85 @@
-/* CSS moderno e fluído */
+/* Reset de margens e padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Fonte padrão para a aplicação */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f4f8;
+    background-color: #dfd8f8; /* Cor suave de lilás claro */
     color: #333;
+    line-height: 1.6;
+}
+
+/* Centralização e estilo para todas as páginas */
+body, html {
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    align-items: center;
+    margin: 0;
 }
 
-h1, h2 {
-    color: #3d5afe;
-    margin-bottom: 15px;
+/* Estilo para o cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.container {
-    max-width: 600px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+.logo-img {
+    width: 120px;
+    height: auto;
     margin-bottom: 20px;
 }
 
-input[type="text"], input[type="password"] {
+.project-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #cb6ce6; /* Magenta */
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* Botões principais */
+button {
+    padding: 12px 20px;
+    background-color: #cb6ce6; /* Magenta */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover para botões */
+button:hover {
+    background-color: #b05bd9;
+}
+
+/* Links */
+a {
+    color: #cb6ce6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-top: 10px;
+}
+
+a:hover {
+    color: #b05bd9;
+}
+
+/* Estilos para inputs */
+input[type="text"], input[type="password"], input[type="checkbox"] {
     padding: 12px;
-    margin: 8px 0;
+    margin: 10px 0;
     border: 1px solid #bdbdbd;
     border-radius: 8px;
     font-size: 16px;
+    width: 100%;
 }
 
 input[type="checkbox"] {
@@ -48,64 +87,25 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
-button {
-    padding: 12px;
-    margin-top: 10px;
-    background-color: #3d5afe;
+/* Formulário de logout */
+.logout-btn {
+    background-color: #ef5350;
     color: white;
-    border: none;
+    width: auto;
+    padding: 12px 20px;
     border-radius: 8px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #303f9f;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9fafc;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 8px;
-}
-
-a {
-    color: #3d5afe;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #303f9f;
-}
-
-.delete-button {
-    background-color: #ef5350;
-    border: none;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.delete-button:hover {
+.logout-btn:hover {
     background-color: #d32f2f;
 }
 
-label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #424242;
+/* Centralização dos formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
+

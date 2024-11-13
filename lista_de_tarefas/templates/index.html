@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
     <div class="container">
-        <h1>Lista de Tarefas</h1>
+
+        <!-- Logo centralizada -->
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logogt.png') }}" alt="Logo" class="logo-img">
+        </div>
+
+        <!-- Nome do projeto -->
+        <h1 class="project-name">Gerenciador de Tarefas</h1>
 
         <!-- Formulário para exclusão em massa -->
         <form id="mass-delete-form" action="/delete_selected" method="POST">
@@ -34,11 +42,11 @@
                 {% endfor %}
             </ul>
 
-            <button type="submit">Excluir Selecionadas</button>
+            <button type="submit" class="delete-btn">Excluir Selecionadas</button>
         </form>
 
         <!-- Formulário para adicionar nova tarefa -->
-        <form action="/add" method="POST">
+        <form class="add-task" action="/add" method="POST">
             <input type="text" name="tarefa" placeholder="Nova tarefa" required>
             <label>
                 <input type="checkbox" name="publica">
@@ -49,7 +57,7 @@
 
         <!-- Formulário para logout -->
         <form action="/logout" method="POST" style="display: inline;">
-            <button type="submit">Logout</button>
+            <button type="submit" class="logout-btn">Logout</button>
         </form>
     </div>
 </body>
