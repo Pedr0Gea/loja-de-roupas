@@ -42,28 +42,42 @@ h1 {
 
 /* Caixa de Tarefa */
 .task-list {
-    list-style: none;
+    list-style: auto;
     padding: 0;
+    border: 1px solid #ddd;
+    /* Borda externa para delimitar a área das tarefas */
+    border-radius: 12px;
+    /* Borda arredondada para a área das tarefas */
+    background-color: #fff;
+    /* Cor de fundo para a área das tarefas */
+    padding: 15px;
+    /* Adiciona um preenchimento interno */
 }
 
 .task-list li {
     background-color: #f7f8fa;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
+    /* A borda da caixinha */
     padding: 12px 15px;
     border-radius: 8px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adicionando uma sombra suave para efeito 3D */
 }
 
+/* Efeito de hover nas tarefas */
 .task-list li:hover {
     background-color: #eaeefb;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    /* Efeito de sombra mais forte no hover */
 }
 
 /* Checkbox personalizado */
 .task-list input[type="checkbox"] {
-    appearance: none;
+    appearance: menu;
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -75,6 +89,7 @@ h1 {
     transition: background-color 0.2s;
 }
 
+/* Quando o checkbox está checado */
 .task-list input[type="checkbox"]:checked {
     background-color: #5d3fd3;
     border-color: #5d3fd3;
@@ -143,7 +158,7 @@ form.add-task {
 
 /* Botão de Logout */
 .logout-btn {
-    background-color: #ef5350;
+    background-color: #b4b4b4e7;
     color: white;
     padding: 10px 15px;
     border-radius: 6px;
@@ -157,4 +172,48 @@ form.add-task {
 
 .logout-btn:hover {
     background-color: #d32f2f;
+}
+
+ul {
+    list-style-type: none;
+    /* Remove os marcadores de lista */
+    padding-left: 0;
+    /* Remove o padding padrão da lista */
+}
+
+/* Formatação para os itens da lista, com bordas e sombra */
+ul li {
+    padding-left: 0;
+    /* Garante que não haja preenchimento à esquerda */
+    margin: 10px 0;
+    /* Espaçamento entre as tarefas */
+    padding: 15px;
+    /* Espaçamento dentro da tarefa */
+    border: 1px solid #bdbdbd;
+    /* Borda sutil em volta de cada tarefa */
+    border-radius: 8px;
+    /* Borda arredondada */
+    background-color: #fff;
+    /* Cor de fundo branca */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    /* Transição suave */
+}
+
+/* Efeito de hover nas tarefas */
+ul li:hover {
+    background-color: #f4e6fc;
+    /* Cor de fundo quando passar o mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    /* Sombra mais forte no hover */
+}
+
+/* Listas de Tarefas */
+.task-section {
+    margin: 20px 0;
+    max-height: 60vh;
+    /* Definindo altura máxima para o contêiner */
+    overflow-y: auto;
+    /* Habilita a rolagem quando o conteúdo exceder a altura */
 }
