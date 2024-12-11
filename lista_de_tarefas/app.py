@@ -8,7 +8,7 @@ import os
 
 # Inicializa o aplicativo Flask
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://@Note-1077/roupas?driver=ODBC+Driver+17+for+SQL+Server'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://ip-ou-nome-da-maquina/roupas?driver=ODBC+Driver+17+for+SQL+Server'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '35634651a' 
 db = SQLAlchemy(app)
