@@ -1,85 +1,98 @@
-/* Estilo Global */
+/* Corpo */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #dfd8f8;  /* Cor suave de lilás claro */
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
 }
 
-/* Container centralizado para o conteúdo */
-.login-container {
-    max-width: 500px;
+/* Cabeçalho */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+}
+
+.header .logo-img {
+    width: 150px;
+    height: auto;
+}
+
+/* Estilo dos Formulários */
+.form-container {
+    background-color: white;
     width: 100%;
-    background-color: #ffffff;
+    max-width: 400px;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Logo */
-.logo-img {
-    width: 120px;  /* Ajuste o tamanho conforme necessário */
-    height: auto;
+.form-container h1 {
+    font-size: 24px;
+    color: #333;
     margin-bottom: 20px;
 }
 
-/* Nome do projeto */
-.project-name {
-    font-size: 24px;
-    color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
-    margin-bottom: 30px;
-    font-weight: bold;
+.form-group {
+    margin-bottom: 15px;
 }
 
-/* Formulário de login/registro */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Campos de input (login e senha) */
-input[type="text"], input[type="password"] {
-    padding: 12px;
-    margin: 12px 0;
-    border: 1px solid #bdbdbd;
-    border-radius: 8px;
-    font-size: 16px;
+.form-group input {
     width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
 }
 
-/* Botão de login/registro */
-button {
-    padding: 12px;
-    margin-top: 20px;
-    background-color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
+.form-group input:focus {
+    border-color: #cb6ce6;
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #cb6ce6;
     color: white;
+    padding: 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 16px;
     width: 100%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-/* Efeito de hover no botão */
-button:hover {
-    background-color: #b05bd9;  /* Tom mais escuro de magenta (#b05bd9) */
+.btn-submit:hover {
+    background-color: #a15bb5;
 }
 
-/* Link de registro */
-.register-link {
-    color: #cb6ce6;  /* Magenta suave (#cb6ce6) */
-    text-decoration: none;
-    margin-top: 20px;
+/* Links */
+.register-link, .login-link {
     font-size: 14px;
-    transition: color 0.3s ease;
+    color: #555;
+    margin-top: 20px;
 }
 
-.register-link:hover {
-    color: #b05bd9;  /* Tom mais escuro de magenta (#b05bd9) */
+.register-link a, .login-link a {
+    color: #cb6ce6;
+    text-decoration: none;
+}
+
+.register-link a:hover, .login-link a:hover {
+    color: #a15bb5;
+}
+
+/* Estilo para telas pequenas */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .header .logo-img {
+        width: 120px;
+    }
 }

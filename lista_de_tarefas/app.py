@@ -5,21 +5,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import Column, Integer, String, Boolean
 from flask_migrate import Migrate
 import os
-# pip install flask flask-sqlalchemy flask-login flask-migrate werkzeug
-# Remove-Item -Recurse -Force venv
-# python -m venv venv
-#.\venv\Scripts\activate
-# cd C:\Users\lucas.carmona\Documents\GitHub\FlaskLista\lista_de_tarefas
-# pip install Flask Flask-SQLAlchemy Flask-Login Flask-Migrate Werkzeug
-# flask db init
-# flask db migrate -m "Mensagem da migração"
-# flask db upgrade
 
 # Inicializa o aplicativo Flask
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'tarefas.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://@Note-1077/roupas?driver=ODBC+Driver+17+for+SQL+Server'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = '35634651a'  # Alterar para uma chave secreta mais forte
+app.config['SECRET_KEY'] = '35634651a' 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -38,17 +29,15 @@ class Usuario(UserMixin, db.Model):
     senha = db.Column(db.String(150), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
-# Modelo de Tarefa
-class Tarefa(db.Model):
-    __tablename__ = 'tarefa'
-    
-    id = Column(Integer, primary_key=True)
-    nome = Column(String, nullable=False)
-    usuario_id = Column(Integer, db.ForeignKey('usuario.id'), nullable=True)
-    publica = Column(Boolean, default=False)
+# Modelo de Roupa
+class Roupa(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    preco = db.Column(db.Float, nullable=False) 
+    usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
+    publica = db.Column(db.Boolean, default=False)
 
-    # Relacionamento com Usuario
-    usuario = db.relationship('Usuario', backref='tarefas')
+    usuario = db.relationship('Usuario', backref='roupas')
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -96,28 +85,47 @@ def logout():
 @app.route('/add', methods=['POST'])
 @login_required
 def add():
-    tarefa_nome = request.form.get('tarefa')
+    roupa_nome = request.form.get('roupa')
+    preco = request.form.get('preco')
     publica = request.form.get('publica') == 'on'
 
-    if tarefa_nome:
-        nova_tarefa = Tarefa(nome=tarefa_nome, usuario_id=current_user.id, publica=publica)
-        db.session.add(nova_tarefa)
-        db.session.commit()
-    return redirect('/')
+    # Verifica se o nome e o preço foram preenchidos
+    if roupa_nome and preco:
+        try:
+            preco = int(preco)  # Converte o preço para inteiro
+            nova_roupa = Roupa(
+                nome=roupa_nome, 
+                preco=float(preco),
+                usuario_id=current_user.id, 
+                publica=publica
+            )
+            db.session.add(nova_roupa)
+            db.session.commit()
+            flash('Roupa adicionada com sucesso!')
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Erro ao adicionar roupa: {str(e)}', 'error')
+            print(f"Erro ao adicionar roupa: {str(e)}")  # Exibe erro no terminal
+    else:
+        flash('Nome e preço são obrigatórios!', 'error')
+
+    return redirect(url_for('index'))
+
 
 @app.route('/')
 @login_required
 def index():
-    tarefas_publicas = Tarefa.query.filter_by(publica=True).all()
-    tarefas_privadas = Tarefa.query.filter_by(usuario_id=current_user.id, publica=False).all()
-    return render_template('index.html', tarefas_publicas=tarefas_publicas, tarefas_privadas=tarefas_privadas)
+    roupas_publicas = Roupa.query.filter_by(publica=True).all()
+    roupas_privadas = Roupa.query.filter_by(usuario_id=current_user.id, publica=False).all()
+    return render_template('index.html', roupas_publicas=roupas_publicas, roupas_privadas=roupas_privadas)
+
 
 @app.route('/delete_selected', methods=['POST'])
 @login_required
 def delete_selected():
-    tarefa_ids = request.form.getlist('tarefas')
-    if tarefa_ids:
-        Tarefa.query.filter(Tarefa.id.in_(tarefa_ids)).delete(synchronize_session=False)
+    roupa_ids = request.form.getlist('roupas') 
+    if roupa_ids:
+        Roupa.query.filter(Roupa.id.in_(roupa_ids)).delete(synchronize_session=False)
         db.session.commit()
     return redirect('/')
 

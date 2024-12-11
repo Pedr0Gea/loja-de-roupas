@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Gerenciador de Tarefas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login - Loja de Roupas</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body class="login-page">
-    <div class="login-container">
-        <!-- Logo centralizada -->
+    <header class="header">
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logogt.png') }}" alt="Logo" class="logo-img">
+            <img src="https://media.licdn.com/dms/image/v2/C5612AQH3rWcAnOdrGg/article-cover_image-shrink_423_752/article-cover_image-shrink_423_752/0/1520146549981?e=1739404800&v=beta&t=ZNDJMrr7lhLgfkEEGshW5-6SeNnyQzyh1e6VAeXVmi4" alt="Logo" class="logo-img">
         </div>
+    </header>
 
-        <!-- Nome do projeto -->
-        <h1 class="project-name">Gerenciador de Tarefas</h1>
-
-        <!-- Formulário de login -->
+    <div class="form-container">
+        <h1>Bem-vindo de volta!</h1>
         <form action="/login" method="POST">
-            <input type="text" name="login" id="login" placeholder="Login" required>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
+            <div class="form-group">
+                <input type="text" name="login" placeholder="Nome de usuário" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="senha" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn-submit">Entrar</button>
         </form>
-
-        <!-- Link de registro -->
-        <a href="/register" class="register-link">Não tem uma conta? Registre-se</a>
+        <p class="register-link">Ainda não tem uma conta? <a href="/register">Cadastre-se</a></p>
     </div>
+
 </body>
 </html>

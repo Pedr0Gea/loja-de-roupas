@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tarefas</title>
+    <title>Lista de Roupas</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
@@ -14,46 +14,103 @@
 
         <!-- Logo centralizada -->
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/logogt.png') }}" alt="Logo" class="logo-img">
+            <img src="https://media.licdn.com/dms/image/v2/C5612AQH3rWcAnOdrGg/article-cover_image-shrink_423_752/article-cover_image-shrink_423_752/0/1520146549981?e=1739404800&v=beta&t=ZNDJMrr7lhLgfkEEGshW5-6SeNnyQzyh1e6VAeXVmi4" alt="Logo" class="logo-img">
         </div>
 
         <!-- Nome do projeto -->
-        <h1 class="project-name">Gerenciador de Tarefas</h1>
+        <h1 class="project-name">Loja de Roupas</h1>
+
+        <!-- Seção de Produtos em Destaque -->
+        <section class="featured-products">
+            <h2>Produtos em Destaque</h2>
+            <div class="products">
+                <!-- Produto 1 -->
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZD2x9uHM9-OQ5yEmUATJaP0uBmtLTXYAlqrtKwU7dVch0TpXwMJfxkbSwaRpptK52rRI&usqp=CAU" alt="Camiseta Polo Nike Branca" class="product-image">
+                    <p class="product-name">Camiseta Polo Nike Branca</p>
+                    <p class="product-price">R$ 300,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <img src="https://adaptive-images.uooucdn.com.br/ik-seo/tr:w-500,h-750,c-at_max,pr-true,q-80/a22343-ogxys3ltwt0/pv/c3/82/16/2ae748c9db23cd07906d2986f2/tenis-vans-old-skool-classic-2.jpg" alt="Tênis Vans" class="product-image">
+                    <p class="product-name">Tênis Vans Preto</p>
+                    <p class="product-price">R$ 370,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <img src="https://images.tcdn.com.br/img/img_prod/1303097/jaqueta_adidas_training_com_ziper_sereno_49181_1_d64fa4b64ef76edeb3cc8bf582abd30b.jpg" alt="Casaco Adidas" class="product-image">
+                    <p class="product-name">Casaco Adidas Preto</p>
+                    <p class="product-price">R$ 320,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Produto 4 -->
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsoLHX_4hKGSKSWEVWG4NiaDDglly99kgILA&s" alt="calça High" class="product-image">
+                    <p class="product-name">Calça High Verde</p>
+                    <p class="product-price">R$ 380,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Produto 5 -->
+                <div class="product-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4bUdcF0Ro8hznQA_T0AYteO7ylsroygCA2g&s" alt="Camisa Bow Clothing" class="product-image">
+                    <p class="product-name">Camisa Baw Clothing Roxa</p>
+                    <p class="product-price">R$ 300,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Produto 6 -->
+                <div class="product-card">
+                    <img src="https://authenticfeet.vtexassets.com/arquivos/ids/239700-800-800?v=637438943741330000&width=800&height=800&aspect=true" alt="Air Force 1 Branco" class="product-image">
+                    <p class="product-name">Air Force 1 Branco</p>
+                    <p class="product-price">R$ 890,00</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+            </div>
+        </section>
 
         <!-- Formulário para exclusão em massa -->
-        <form id="mass-delete-form" action="/delete_selected" method="POST">
-            <h2>Tarefas Públicas</h2>
-            <ul>
-                {% for tarefa in tarefas_publicas %}
-                <li>
-                    <input type="checkbox" name="tarefas" value="{{ tarefa.id }}">
-                    {{ tarefa.nome }} <small>(criado por: {{ tarefa.usuario.login }})</small>
-                </li>
-                {% endfor %}
-            </ul>
+<form id="mass-delete-form" action="/delete_selected" method="POST">
+    <h2>Roupas</h2>
+    <ul>
+        {% for roupa in roupas_publicas %}
+        <li>
+            <input type="checkbox" name="roupas" value="{{ roupa.id }}">
+            <span class="roupa-name">{{ roupa.nome }}</span> 
+            <span class="roupa-price"> - R$ {{ roupa.preco }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 
-            <h2>Tarefas Privadas</h2>
-            <ul>
-                {% for tarefa in tarefas_privadas %}
-                <li>
-                    <input type="checkbox" name="tarefas" value="{{ tarefa.id }}">
-                    {{ tarefa.nome }}
-                </li>
-                {% endfor %}
-            </ul>
+    <h2>Roupas VIP</h2>
+    <ul>
+        {% for roupa in roupas_privadas %}
+        <li>
+            <input type="checkbox" name="roupas" value="{{ roupa.id }}">
+            <span class="roupa-name">{{ roupa.nome }}</span> 
+            <span class="roupa-price"> - R$ {{ roupa.preco }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 
-            <button type="submit" class="delete-btn">Excluir Selecionadas</button>
-        </form>
+    <button type="submit" class="delete-btn">Excluir Produtos Selecionados</button>
+</form>
 
-        <!-- Formulário para adicionar nova tarefa -->
-        <form class="add-task" action="/add" method="POST">
-            <input type="text" name="tarefa" placeholder="Nova tarefa" required>
-            <label>
-                <input type="checkbox" name="publica">
-                Pública
-            </label>
-            <button type="submit">Adicionar</button>
-        </form>
+        <!-- Formulário para adicionar nova roupa -->
+<form class="add-task" action="/add" method="POST">
+    <label for="roupa">Nome da Roupa:</label>
+    <input type="text" name="roupa" id="roupa" placeholder="Nome da roupa" required>
+
+    <label for="preco">Preço:</label>
+    <input type="number" name="preco" id="preco" placeholder="Preço da roupa" required>
+
+    <label>
+        <input type="checkbox" name="publica">
+        Pública
+    </label>
+
+    <button type="submit">Adicionar</button>
+</form>
 
         <!-- Formulário para logout -->
         <form action="/logout" method="POST" style="display: inline;">

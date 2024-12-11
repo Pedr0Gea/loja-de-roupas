@@ -1,99 +1,173 @@
 /* Estilo Global */
-body.tasks-page {
+body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f2f5;
+    background-color: #f5f5f5;
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    justify-content: flex-start;
 }
 
+/* Container principal */
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     text-align: center;
+    margin-top: 20px;
 }
 
-/* Título */
-h1 {
-    font-size: 2.2em;
-    color: #5d3fd3;
+/* Logo centralizada */
+.logo-img {
+    width: 150px;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Título da loja */
+.project-name {
+    font-size: 2.8em;
+    color: #181875;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
-/* Listas de Tarefas */
-.task-section {
+/* Seção de Produtos */
+.featured-products {
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* Cartões de produtos */
+.products {
+    display: flex;
+    justify-content: flex-start;  /* Alinha os produtos à esquerda */
+    gap: 10px;  /* Reduz o espaçamento entre os produtos */
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: #fff;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;  /* Ajuste o padding se necessário */
+    margin-bottom: 20px;  /* Ajuste a margem inferior, se necessário */
+    transition: transform 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-name {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 1.1em;
+    color: #5d3fd3;
+    margin: 5px 0;
+}
+
+.buy-button {
+    padding: 10px;
+    background-color: #5d3fd3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #452bad;
+}
+
+/* Listas de Roupas */
+.clothing-section {
     margin: 20px 0;
 }
 
-.task-section h2 {
-    font-size: 1.5em;
-    color: #5d3fd3;
-    margin: 20px 0 10px;
-}
-
-/* Caixa de Tarefa */
-.task-list {
-    list-style: auto;
-    padding: 0;
-    border: 1px solid #ddd;
-    /* Borda externa para delimitar a área das tarefas */
-    border-radius: 12px;
-    /* Borda arredondada para a área das tarefas */
-    background-color: #fff;
-    /* Cor de fundo para a área das tarefas */
-    padding: 15px;
-    /* Adiciona um preenchimento interno */
-}
-
-.task-list li {
+/* Formulário para exclusão em massa */
+form#mass-delete-form {
     background-color: #f7f8fa;
-    border: 2px solid #ddd;
-    /* A borda da caixinha */
-    padding: 12px 15px;
+    padding: 20px;
     border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilos dos títulos de seções no formulário */
+form#mass-delete-form h2 {
+    font-size: 1.8em;
+    color: #333;
     margin-bottom: 10px;
+}
+
+form#mass-delete-form h3 {
+    font-size: 1.4em;
+    color: #5d3fd3;
+    margin-bottom: 10px;
+}
+
+/* Estilo das listas de roupas */
+form#mass-delete-form .roupas-list {
+    margin-bottom: 20px;
+}
+
+form#mass-delete-form .roupas-list-items {
+    list-style: none;
+    padding: 0;
+}
+
+form#mass-delete-form .roupa-item {
     display: flex;
     align-items: center;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adicionando uma sombra suave para efeito 3D */
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.3s;
 }
 
-/* Efeito de hover nas tarefas */
-.task-list li:hover {
-    background-color: #eaeefb;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    /* Efeito de sombra mais forte no hover */
+form#mass-delete-form .roupa-item:hover {
+    background-color: #f0f0f0;
 }
 
-/* Checkbox personalizado */
-.task-list input[type="checkbox"] {
-    appearance: menu;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 2px solid #5d3fd3;
-    margin-right: 10px;
-    cursor: pointer;
-    position: relative;
-    outline: none;
-    transition: background-color 0.2s;
+form#mass-delete-form .roupa-checkbox {
+    margin-right: 15px;
 }
 
-/* Quando o checkbox está checado */
-.task-list input[type="checkbox"]:checked {
-    background-color: #5d3fd3;
-    border-color: #5d3fd3;
-    color: #fff;
+form#mass-delete-form .roupa-name {
+    font-size: 1.2em;
+    color: #333;
+}
+
+form#mass-delete-form .roupa-price {
+    font-size: 1.1em;
+    color: #5d3fd3;
+    margin-left: 10px;
 }
 
 /* Botão de exclusão em massa */
@@ -114,8 +188,8 @@ button.delete-btn:hover {
     background-color: #d32f2f;
 }
 
-/* Formulário de Nova Tarefa */
-form.add-task {
+/* Formulários */
+form.add-task, form#mass-delete-form {
     background-color: #f7f8fa;
     padding: 20px;
     border-radius: 8px;
@@ -124,6 +198,7 @@ form.add-task {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .add-task input[type="text"] {
@@ -134,86 +209,32 @@ form.add-task {
     width: 100%;
 }
 
-.add-task label {
-    display: flex;
-    align-items: center;
-    font-size: 0.9em;
-    gap: 5px;
-}
-
 .add-task button {
     background-color: #5d3fd3;
-    color: #fff;
-    border: none;
+    color: white;
     padding: 10px;
+    border: none;
     border-radius: 6px;
-    font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 .add-task button:hover {
     background-color: #452bad;
 }
 
-/* Botão de Logout */
 .logout-btn {
-    background-color: #b4b4b4e7;
+    background-color: #ff5722;
     color: white;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 1em;
-    cursor: pointer;
+    padding: 10px;
     border: none;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
 }
 
 .logout-btn:hover {
     background-color: #d32f2f;
-}
-
-ul {
-    list-style-type: none;
-    /* Remove os marcadores de lista */
-    padding-left: 0;
-    /* Remove o padding padrão da lista */
-}
-
-/* Formatação para os itens da lista, com bordas e sombra */
-ul li {
-    padding-left: 0;
-    /* Garante que não haja preenchimento à esquerda */
-    margin: 10px 0;
-    /* Espaçamento entre as tarefas */
-    padding: 15px;
-    /* Espaçamento dentro da tarefa */
-    border: 1px solid #bdbdbd;
-    /* Borda sutil em volta de cada tarefa */
-    border-radius: 8px;
-    /* Borda arredondada */
-    background-color: #fff;
-    /* Cor de fundo branca */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra sutil */
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
-    /* Transição suave */
-}
-
-/* Efeito de hover nas tarefas */
-ul li:hover {
-    background-color: #f4e6fc;
-    /* Cor de fundo quando passar o mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-    /* Sombra mais forte no hover */
-}
-
-/* Listas de Tarefas */
-.task-section {
-    margin: 20px 0;
-    max-height: 60vh;
-    /* Definindo altura máxima para o contêiner */
-    overflow-y: auto;
-    /* Habilita a rolagem quando o conteúdo exceder a altura */
 }
